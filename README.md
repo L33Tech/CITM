@@ -17,7 +17,7 @@ Please support the developers of Battle Cats so that they can add more content f
 
 1. This hack follows a Man-in-the-Middle (MITM) network approach instead of the usual save data modification (using transfer code and confirmation code). The latter would be more easily detected by the corresponding servers if playing online.
 
-2. This method would not require any jailbreaking, rooting or any game cheating/hacking software.
+2. This method would not require any jailbreaking, rooting or any game cheating/hacking software, except for cases of usage with  Android versions beyond `Nougat` (>= 7.0).
 
 3. As far as I know, this method is also region-insensitive since it just utilizes the main Internet connection to `ponosgames.com`, instead of taking advantage of region-specific package names and hash salts.
 
@@ -25,13 +25,13 @@ Please support the developers of Battle Cats so that they can add more content f
 
 ## Usage
 
-We will be using [Fiddler from Telerik](https://www.telerik.com/fiddler) since it is free, so download and install Fiddler on your computer. Of course, you could use Wireshark, Firebug, Charles Proxy, mitmproxy, etc. and I would assume that the steps would be similar. At the time of this writing, I was using Fiddler v5.0 (and it is working for Battle Cats v9.0).
+We will be using [Fiddler from Telerik](https://www.telerik.com/fiddler) since it is free, so download and install Fiddler on your computer. Of course, you could use Wireshark, Firebug, Charles Proxy, mitmproxy, etc. and I would assume that the steps would be similar. At the time of this writing, I was using Fiddler v5.0 (and it is working for Battle Cats v9.4).
 
 Firstly, connect your mobile device (or emulator) to your computer's Internet connection (possibly through the `Mobile Hotspot` feature).
 
 Next, setup your Fiddler to decrypt HTTPS traffic through SSL proxying (follow [this tutorial](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/DecryptHTTPS)).
 
-After that, configure your mobile device to pass their HTTPS traffic to Fiddler (follow [this tutorial](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/ConfigureForiOS) for iOS devices or [this tutorial](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/ConfigureForAndroid) for Android devices). Do take note that without rooting, this method will only work with Android versions before `Nougat` (<7.0). Beyond Android `Nougat`, root access would be required.
+After that, configure your mobile device to pass their HTTPS traffic to Fiddler (follow [this tutorial](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/ConfigureForiOS) for iOS devices or [this tutorial](https://docs.telerik.com/fiddler/Configure-Fiddler/Tasks/ConfigureForAndroid) for Android devices). Do take note that without rooting, this method will only work with Android versions before `Nougat` (< 7.0). Beyond Android `Nougat`, root access would be required.
 
 Once the traffic is re-routed through your computer, set a filter in Fiddler's `Filters` tab to show only the host `nyanko-items.ponosgames.com` and tick the options `Break request on POST` and `Break request on GET with query string`. After the filter setup is done, go to `Actions` and press `Run Filterset now`.
 
@@ -48,26 +48,26 @@ Through `TextView` on Fiddler's `Inspectors` tab, you would be able to edit the 
 ```json
 [
   {
-    "id":1,
-    "accountId":"<your-account-id>",
-    "title":"Items",
-    "body":"",
-    "clientVersion":90000,
-    "country":"en",
-    "accepted":null,
-    "created":<unix-timestamp>,
-    "items":<item-list>
+    "id": 1,
+    "accountId": "<your-account-id>",
+    "title": "Items",
+    "body": "",
+    "clientVersion": 90400,
+    "country": "en",
+    "accepted": null,
+    "created": <unix-timestamp>,
+    "items": <item-list>
   },
   {
-    "id":2,
-    "accountId":"<your-account-id>",
-    "title":"Cats",
-    "body":"",
-    "clientVersion":90000,
-    "country":"en",
-    "accepted":null,
-    "created":<unix-timestamp>,
-    "items":<cat-list>
+    "id": 2,
+    "accountId": "<your-account-id>",
+    "title": "Cats",
+    "body": "",
+    "clientVersion": 90400,
+    "country": "en",
+    "accepted": null,
+    "created": <unix-timestamp>,
+    "items": <cat-list>
   }
 ]
 ```
